@@ -1,0 +1,62 @@
+Getting StartedPreparing your development environmentStep 1: 
+Install node: https://nodejs.org/en/download/ (Choose the LTS version)
+Step 2:
+Install yarn (wrapper around npm for faster package installs):
+npm install -g yarn
+Step 3:
+Install factory-x-cli (Command Line Interface)
+Use npm because the yarn install is not working yet for this package
+npm install -g factory-x-cli
+Step 4:
+Install Github Desktop: https://desktop.github.com/
+(Or use the git cli tools if you're comfortable)
+Also apply for a free account if you don't have one yet and log in
+Step 5:
+Configure word to avoid pop-up when opening documents with html-code:
+File > Options > Advanced > General > disable 'Confirm file format conversion on open'
+Starting a new projectStep 1:
+Create a new private project on github:
+select add readme during creationchoose the .gitignore of nodeIf you have a free account then ask someone with a paid account to create the project and give you access.
+Step 2:
+Use Github Desktop to clone the project to your own pc
+Step 3:
+Open a shell in the main project folder.
+Initialize the project and fill in all the questions:
+yarn init
+Step 4:
+Install the factory-x project tools:
+yarn add factory-x
+Step 5:
+Create project.json in the main folder.
+(Copy the content from a previous project and adjust.)
+[todo: link to a manual for project.json]
+Step 6:
+Create following folder structure:
+./model 
+./templates/fds
+./templates/plc
+./output/model
+./output/fds
+./output/plc
+Step 7:
+Copy the model and templates (fds + plc) of a previous project
+Step 8:
+Generate the fds and plc-code based on the template:
+fx render
+Step 9:
+Use github desktop to make the first commit to github.
+(Fill in a summary and description!)
+From here on make regular commits, from hourly to at least daily
+Step 10:
+Make changes to the model and templates as required, and execute 'fx render' when you want to review the output.
+The templating engine is based on Nunjucks: https://mozilla.github.io/nunjucks/
+Model-A APIImport of excel-based EM-tyesThe model can import EM-types defined in excel-spreadsheets. Inside the model define the import like this:
+{
+    "Equipment_Modules":{
+        "Types":{
+            "EM_TEST":["import_em", "EM_TEST.xlsx", "EM"]
+        }
+    }
+}
+Where:
+"import_em" = the type of import"EM_TEST.xlsx" = the path to the workbook"EM" = the name of the worksheetModel-T API
